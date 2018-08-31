@@ -53,12 +53,17 @@ y=y.reshape([-1,7,1])          #reshaping series into numpy arrays
 X_train,X_test,y_train,y_test =train_test_split(x, y, test_size=0.2336,shuffle=False)     #splitting the data set
 
 #LSTM
+
 model = Sequential()
+
 model.add(LSTM(7, return_sequences=False,batch_input_shape=(batch_size, timesteps, 22)))
+
 model.add(LSTM(100, return_sequences=True))  
+
 model.add(LSTM(1,activation='softmax', return_sequences=False)) 
+
 model.compile(loss='binary_crossentropy',
-              optimizer='rmsprop',
+optimizer='rmsprop',
               metrics=['accuracy'])
 
 model.summary()
